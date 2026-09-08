@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Employee Management System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-users"></i>
+                    <span>EMS</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="employees.html" class="nav-link">
+                            <i class="fas fa-users"></i>
+                            <span>Employees</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="departments.html" class="nav-link">
+                            <i class="fas fa-building"></i>
+                            <span>Departments</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="attendance.html" class="nav-link">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Attendance</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="payroll.html" class="nav-link">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>Payroll</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reports.html" class="nav-link">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="profile.html" class="nav-link">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>My Profile</h1>
+                </div>
+                
+                <div class="header-right">
+                    <div class="notifications">
+                        <button class="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                    </div>
+                    
+                    <div class="user-menu">
+                        <button class="user-btn" onclick="toggleUserMenu()">
+                            <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="User" class="user-avatar">
+                            <span class="user-name">John Doe</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="profile.html">
+                                <i class="fas fa-user"></i>
+                                Profile
+                            </a>
+                            <a href="settings.html">
+                                <i class="fas fa-cog"></i>
+                                Settings
+                            </a>
+                            <a href="#" onclick="logout()">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Profile Content -->
+            <div class="profile-section">
+                <div class="profile-header">
+                    <div class="profile-cover">
+                        <div class="profile-avatar">
+                            <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Profile Picture" id="profileImage">
+                            <button class="change-photo-btn" onclick="changeProfilePhoto()">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                        <div class="profile-info">
+                            <h2 id="profileName">John Doe</h2>
+                            <p id="profileTitle">Senior Software Engineer</p>
+                            <div class="profile-meta">
+                                <span><i class="fas fa-building"></i> IT Department</span>
+                                <span><i class="fas fa-calendar"></i> Joined Jan 2022</span>
+                                <span><i class="fas fa-map-marker-alt"></i> New York, USA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-content">
+                    <div class="profile-tabs">
+                        <button class="tab-btn active" onclick="showTab('overview')">Overview</button>
+                        <button class="tab-btn" onclick="showTab('personal')">Personal Info</button>
+                        <button class="tab-btn" onclick="showTab('security')">Security</button>
+                        <button class="tab-btn" onclick="showTab('preferences')">Preferences</button>
+                    </div>
+                    
+                    <!-- Overview Tab -->
+                    <div class="tab-content active" id="overview">
+                        <div class="profile-grid">
+                            <div class="profile-card">
+                                <h3>Contact Information</h3>
+                                <div class="info-group">
+                                    <label>Email:</label>
+                                    <span>john.doe@company.com</span>
+                                </div>
+                                <div class="info-group">
+                                    <label>Phone:</label>
+                                    <span>+1 (555) 123-4567</span>
+                                </div>
+                                <div class="info-group">
+                                    <label>Address:</label>
+                                    <span>123 Main St, New York, NY 10001</span>
+                                </div>
+                            </div>
+                            
+                            <div class="profile-card">
+                                <h3>Employment Details</h3>
+                                <div class="info-group">
+                                    <label>Employee ID:</label>
+                                    <span>EMP001</span>
+                                </div>
+                                <div class="info-group">
+                                    <label>Department:</label>
+                                    <span>IT Department</span>
+                                </div>
+                                <div class="info-group">
+                                    <label>Position:</label>
+                                    <span>Senior Software Engineer</span>
+                                </div>
+                                <div class="info-group">
+                                    <label>Manager:</label>
+                                    <span>Jane Smith</span>
+                                </div>
+                            </div>
+                            
+                            <div class="profile-card">
+                                <h3>Quick Stats</h3>
+                                <div class="stats-row">
+                                    <div class="stat-item">
+                                        <i class="fas fa-calendar-check"></i>
+                                        <div>
+                                            <span class="stat-number">98%</span>
+                                            <span class="stat-label">Attendance</span>
+                                        </div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="fas fa-clock"></i>
+                                        <div>
+                                            <span class="stat-number">2.5</span>
+                                            <span class="stat-label">Years</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="profile-card">
+                                <h3>Recent Activity</h3>
+                                <div class="activity-list">
+                                    <div class="activity-item">
+                                        <i class="fas fa-sign-in-alt"></i>
+                                        <div>
+                                            <span>Logged in</span>
+                                            <time>2 hours ago</time>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-file"></i>
+                                        <div>
+                                            <span>Updated profile information</span>
+                                            <time>1 day ago</time>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <i class="fas fa-calendar"></i>
+                                        <div>
+                                            <span>Submitted leave request</span>
+                                            <time>3 days ago</time>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Personal Info Tab -->
+                    <div class="tab-content" id="personal">
+                        <form class="profile-form">
+                            <div class="form-section">
+                                <h3>Basic Information</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" id="firstName" value="John">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" id="lastName" value="Doe">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" value="john.doe@company.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input type="tel" id="phone" value="+1 (555) 123-4567">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <textarea id="address" rows="3">123 Main St, New York, NY 10001</textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="form-section">
+                                <h3>Personal Details</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="birthDate">Date of Birth</label>
+                                        <input type="date" id="birthDate" value="1990-01-15">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gender">Gender</label>
+                                        <select id="gender">
+                                            <option value="male" selected>Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="emergencyContact">Emergency Contact</label>
+                                        <input type="text" id="emergencyContact" value="Jane Doe">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="emergencyPhone">Emergency Phone</label>
+                                        <input type="tel" id="emergencyPhone" value="+1 (555) 987-6543">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Security Tab -->
+                    <div class="tab-content" id="security">
+                        <div class="security-section">
+                            <h3>Change Password</h3>
+                            <form class="password-form">
+                                <div class="form-group">
+                                    <label for="currentPassword">Current Password</label>
+                                    <input type="password" id="currentPassword" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newPassword">New Password</label>
+                                    <input type="password" id="newPassword" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmPassword">Confirm New Password</label>
+                                    <input type="password" id="confirmPassword" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Password</button>
+                            </form>
+                        </div>
+                        
+                        <div class="security-section">
+                            <h3>Two-Factor Authentication</h3>
+                            <div class="security-option">
+                                <div class="option-info">
+                                    <strong>SMS Authentication</strong>
+                                    <p>Receive verification codes via SMS</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="security-option">
+                                <div class="option-info">
+                                    <strong>Email Authentication</strong>
+                                    <p>Receive verification codes via email</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Preferences Tab -->
+                    <div class="tab-content" id="preferences">
+                        <div class="preferences-section">
+                            <h3>Notification Preferences</h3>
+                            <div class="preference-group">
+                                <div class="preference-item">
+                                    <div class="preference-info">
+                                        <strong>Email Notifications</strong>
+                                        <p>Receive important updates via email</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="preference-item">
+                                    <div class="preference-info">
+                                        <strong>Push Notifications</strong>
+                                        <p>Receive browser push notifications</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="preference-item">
+                                    <div class="preference-info">
+                                        <strong>SMS Notifications</strong>
+                                        <p>Receive urgent notifications via SMS</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="preferences-section">
+                            <h3>Display Preferences</h3>
+                            <div class="form-group">
+                                <label for="theme">Theme</label>
+                                <select id="theme">
+                                    <option value="light" selected>Light</option>
+                                    <option value="dark">Dark</option>
+                                    <option value="auto">Auto</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="language">Language</label>
+                                <select id="language">
+                                    <option value="en" selected>English</option>
+                                    <option value="es">Spanish</option>
+                                    <option value="fr">French</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="js/profile.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
